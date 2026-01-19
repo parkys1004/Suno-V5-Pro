@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, ArrowRight, AlertCircle } from 'lucide-react';
+import { Lock, ArrowRight, AlertCircle, LogOut } from 'lucide-react';
 
 // Component Imports
 import Background from './components/Background';
@@ -11,8 +11,17 @@ import StrategySection from './components/StrategySection';
 
 // --- Main App Component ---
 
-// 설정할 비밀번호 (여기서 변경하세요)
+// 설정할 비밀번호
 const ACCESS_PASSWORD = "suno2026";
+const STORAGE_KEY = "suno_v5_auth_token";
+
+// SHA-256 암호화 (해싱) 함수
+const hashPassword = async (password: string) => {
+  const msgBuffer = new TextEncoder().encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+};
 
 const App: React.FC = () => {
   // Default to dark mode (true)
@@ -22,24 +31,68 @@ const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
   const [loginError, setLoginError] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true); // 로딩 상태 추가
 
-  const handleLogin = (e: React.FormEvent) => {
+  // 초기 실행 시 저장된 암호화 키 확인
+  useEffect(() => {
+    const checkAuth = async () => {
+      const storedHash = localStorage.getItem(STORAGE_KEY);
+      if (storedHash) {
+        const currentPasswordHash = await hashPassword(ACCESS_PASSWORD);
+        if (storedHash === currentPasswordHash) {
+          setIsAuthenticated(true);
+        }
+      }
+      setIsCheckingAuth(false);
+    };
+    checkAuth();
+  }, []);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (passwordInput === ACCESS_PASSWORD) {
+      // 비밀번호가 맞으면 암호화해서 로컬 스토리지에 저장
+      const hash = await hashPassword(ACCESS_PASSWORD);
+      localStorage.setItem(STORAGE_KEY, hash);
+      
       setIsAuthenticated(true);
       setLoginError(false);
     } else {
       setLoginError(true);
-      // Shake effect logic could go here, for now just error state
     }
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem(STORAGE_KEY);
+    setIsAuthenticated(false);
+    setPasswordInput("");
+  };
+
+  // 인증 확인 중일 때는 아무것도 렌더링하지 않거나 로딩화면 (깜빡임 방지)
+  if (isCheckingAuth) return null;
 
   return (
     <div className={darkMode ? 'dark' : ''}>
       <div className="min-h-screen text-slate-800 dark:text-slate-100 font-sans selection:bg-indigo-200 dark:selection:bg-indigo-900 selection:text-indigo-900 dark:selection:text-indigo-100 overflow-x-hidden transition-colors duration-500 flex flex-col">
         <Background />
         
-        <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+        {/* Theme Toggle & Logout Button Area */}
+        <div className="fixed top-6 right-6 z-50 flex items-center gap-3">
+          {isAuthenticated && (
+             <motion.button
+               initial={{ opacity: 0, scale: 0.8 }}
+               animate={{ opacity: 1, scale: 1 }}
+               whileHover={{ scale: 1.1 }}
+               whileTap={{ scale: 0.9 }}
+               onClick={handleLogout}
+               className="p-3 rounded-full bg-white/30 dark:bg-slate-800/50 backdrop-blur-md border border-white/40 dark:border-slate-700 shadow-lg text-slate-800 dark:text-slate-200 hover:bg-red-500 hover:text-white dark:hover:bg-red-600 dark:hover:text-white transition-all group"
+               title="로그아웃 (암호 저장 삭제)"
+             >
+               <LogOut className="w-6 h-6" />
+             </motion.button>
+          )}
+          <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+        </div>
 
         <AnimatePresence mode="wait">
           {!isAuthenticated ? (
@@ -96,6 +149,10 @@ const App: React.FC = () => {
                   >
                     입장하기 <ArrowRight className="w-4 h-4" />
                   </motion.button>
+                  
+                  <p className="text-center text-xs text-slate-400 dark:text-slate-500 mt-4">
+                    로그인 시 인증 정보가 브라우저에 안전하게 저장됩니다.
+                  </p>
                 </form>
               </GlassCard>
             </motion.div>

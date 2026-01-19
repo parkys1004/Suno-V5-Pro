@@ -86,7 +86,7 @@ export const ThemeToggle = ({ darkMode, setDarkMode }: { darkMode: boolean; setD
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={() => setDarkMode(!darkMode)}
-      className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/30 dark:bg-slate-800/50 backdrop-blur-md border border-white/40 dark:border-slate-700 shadow-lg text-slate-800 dark:text-yellow-400 hover:bg-white/50 dark:hover:bg-slate-700 transition-all group"
+      className="p-3 rounded-full bg-white/30 dark:bg-slate-800/50 backdrop-blur-md border border-white/40 dark:border-slate-700 shadow-lg text-slate-800 dark:text-yellow-400 hover:bg-white/50 dark:hover:bg-slate-700 transition-all group"
     >
       <AnimatePresence mode="wait">
         {darkMode ? (
