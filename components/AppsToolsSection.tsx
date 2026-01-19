@@ -5,7 +5,8 @@ import {
   ArrowRight, 
   Copy,
   Music,
-  Wand2
+  Wand2,
+  Image as ImageIcon
 } from 'lucide-react';
 import { GlassCard, SectionTitle } from './SharedUI';
 
@@ -73,6 +74,37 @@ const AppsToolsSection: React.FC = () => {
               Prompt Lab 바로가기 <ArrowRight className="w-4 h-4" />
            </motion.a>
         </GlassCard>
+
+        <GlassCard className="p-8 relative overflow-hidden group h-full flex flex-col justify-between md:col-span-2 border-pink-200 dark:border-pink-900/30">
+          <div className="absolute top-0 right-0 p-3 opacity-10 dark:opacity-20 group-hover:opacity-20 dark:group-hover:opacity-30 transition-opacity">
+             <ImageIcon className="w-24 h-24 text-pink-600 dark:text-pink-400 transform -rotate-12" />
+          </div>
+          <div className="relative z-10">
+             <motion.span 
+               whileHover={{ scale: 1.05 }}
+               className="bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block shadow-lg shadow-pink-200 dark:shadow-pink-900/50"
+             >
+               NEW APP
+             </motion.span>
+             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div>
+                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">앨범아트 이미지 생성 웹빌더</h3>
+                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed font-medium max-w-xl">
+                      복잡한 프롬프트 없이 클릭만으로 고퀄리티 앨범 아트를 제작해보세요.
+                   </p>
+                </div>
+                <motion.a 
+                  href="https://ai.studio/apps/drive/1HPxZpePSKUPH5-pW4MdkYYyAjqjk5a0R?fullscreenApplet=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full md:w-auto px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-semibold flex items-center justify-center gap-2 group-hover:bg-pink-600 dark:group-hover:bg-pink-400 transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  앱 실행하기 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </motion.a>
+             </div>
+          </div>
+        </GlassCard>
       </div>
 
       {/* Copy Instruction */}
@@ -84,8 +116,8 @@ const AppsToolsSection: React.FC = () => {
           <div>
             <h4 className="font-bold text-slate-900 dark:text-slate-100 text-lg mb-1">앱 커스텀 이용 안내</h4>
             <p className="text-slate-700 dark:text-slate-300 text-base leading-relaxed font-medium">
-              이용하실 때 앱 복사를 하신 후 이용을 하시면 됩니다. <br className="hidden md:block"/>
-              아래 이미지 왼쪽 두 번째 버튼을 클릭하시면 됩니다.
+              직접 커스텀 하셔서 이용하셔도 됩니다.(Aistudio 빌더앱) <br className="hidden md:block"/>
+              이용하실때 앱 복사를 하신후 이용을 하시면 됩니다. 상단 오른쪽 (카피앱 클릭)
             </p>
           </div>
         </div>
