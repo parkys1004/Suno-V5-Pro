@@ -83,10 +83,10 @@ export const SectionTitle = ({ icon: Icon, title, colorClass, rightElement }: { 
 export const ThemeToggle = ({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: (val: boolean) => void }) => {
   return (
     <motion.button
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       onClick={() => setDarkMode(!darkMode)}
-      className="p-3 rounded-full bg-white/30 dark:bg-slate-800/50 backdrop-blur-md border border-white/40 dark:border-slate-700 shadow-lg text-slate-800 dark:text-yellow-400 hover:bg-white/50 dark:hover:bg-slate-700 transition-all group"
+      className="p-3 rounded-full bg-white/50 dark:bg-slate-900/80 backdrop-blur-md border border-white/60 dark:border-slate-700 shadow-md dark:shadow-black/50 text-slate-700 dark:text-yellow-400 hover:bg-white dark:hover:bg-slate-800 transition-all group"
     >
       <AnimatePresence mode="wait">
         {darkMode ? (
@@ -97,7 +97,7 @@ export const ThemeToggle = ({ darkMode, setDarkMode }: { darkMode: boolean; setD
              exit={{ rotate: 90, opacity: 0 }}
              transition={{ duration: 0.2 }}
            >
-              <Moon className="w-6 h-6 fill-current" />
+              <Moon className="w-5 h-5 fill-current" />
            </motion.div>
         ) : (
            <motion.div
@@ -107,7 +107,7 @@ export const ThemeToggle = ({ darkMode, setDarkMode }: { darkMode: boolean; setD
              exit={{ rotate: -90, opacity: 0 }}
              transition={{ duration: 0.2 }}
            >
-              <Sun className="w-6 h-6 text-orange-500 fill-current" />
+              <Sun className="w-5 h-5 text-orange-500 fill-current" />
            </motion.div>
         )}
       </AnimatePresence>

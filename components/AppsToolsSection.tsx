@@ -22,7 +22,7 @@ const AppsToolsSection: React.FC = () => {
             href="https://purchase-the-pro-version.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 rounded-xl bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors text-base font-bold flex items-center gap-2 border border-indigo-200 dark:border-indigo-800 shadow-sm"
+            className="px-6 py-3 rounded-xl bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-700/50 shadow-sm dark:shadow-inner hover:bg-indigo-50 dark:hover:bg-slate-700 hover:border-indigo-200 dark:hover:border-indigo-500 transition-all text-base font-bold flex items-center gap-2"
           >
             웹빌더 확인용 <ArrowRight className="w-5 h-5" />
           </a>
@@ -49,7 +49,7 @@ const AppsToolsSection: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             whileTap={{ scale: 0.95 }}
-            className="w-full py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-semibold flex items-center justify-center gap-2 group-hover:bg-indigo-600 dark:group-hover:bg-indigo-400 transition-colors cursor-pointer"
+            className="w-full py-3.5 bg-slate-900 dark:bg-gradient-to-b dark:from-slate-100 dark:to-slate-300 text-white dark:text-slate-900 rounded-xl font-bold flex items-center justify-center gap-2 group-hover:bg-indigo-600 dark:hover:brightness-110 transition-all shadow-lg dark:shadow-indigo-500/10 border border-transparent dark:border-white/50 cursor-pointer"
           >
             지금 이용하기 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </motion.a>
@@ -69,7 +69,7 @@ const AppsToolsSection: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-semibold flex items-center justify-center gap-2 group-hover:bg-purple-600 dark:group-hover:bg-purple-400 transition-colors cursor-pointer"
+              className="w-full py-3.5 bg-slate-900 dark:bg-gradient-to-b dark:from-slate-100 dark:to-slate-300 text-white dark:text-slate-900 rounded-xl font-bold flex items-center justify-center gap-2 group-hover:bg-purple-600 dark:hover:brightness-110 transition-all shadow-lg dark:shadow-purple-500/10 border border-transparent dark:border-white/50 cursor-pointer"
            >
               Prompt Lab 바로가기 <ArrowRight className="w-4 h-4" />
            </motion.a>
@@ -98,7 +98,7 @@ const AppsToolsSection: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileTap={{ scale: 0.95 }}
-                  className="w-full md:w-auto px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-semibold flex items-center justify-center gap-2 group-hover:bg-pink-600 dark:group-hover:bg-pink-400 transition-colors cursor-pointer whitespace-nowrap"
+                  className="w-full md:w-auto px-8 py-3.5 bg-slate-900 dark:bg-gradient-to-b dark:from-slate-100 dark:to-slate-300 text-white dark:text-slate-900 rounded-xl font-bold flex items-center justify-center gap-2 group-hover:bg-pink-600 dark:hover:brightness-110 transition-all shadow-lg dark:shadow-pink-500/10 border border-transparent dark:border-white/50 cursor-pointer whitespace-nowrap"
                 >
                   앱 실행하기 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </motion.a>

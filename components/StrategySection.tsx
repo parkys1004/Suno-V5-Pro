@@ -18,28 +18,28 @@ const StrategySection: React.FC = () => {
             href="https://suno-ai-biz-2026.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.02, backgroundColor: "rgba(15, 23, 42, 1)" }} // dark: bg-slate-950
+            whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="block w-full text-left p-6 rounded-2xl bg-slate-900 dark:bg-indigo-950 text-white shadow-xl shadow-slate-200 dark:shadow-black/50 group relative overflow-hidden border border-transparent dark:border-indigo-800 cursor-pointer"
+            className="block w-full text-left p-6 rounded-2xl bg-slate-900 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-900 dark:to-[#0f172a] text-white shadow-xl shadow-slate-200 dark:shadow-indigo-900/20 group relative overflow-hidden border border-transparent dark:border-indigo-500/30 cursor-pointer"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500 rounded-full blur-[50px] opacity-20 group-hover:opacity-40 transition-opacity" />
-            <h3 className="text-xl font-bold mb-2 relative z-10 flex items-center gap-2">
+            <h3 className="text-xl font-bold mb-2 relative z-10 flex items-center gap-2 text-white">
               2026 AI 음악 수익화 전략
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
             </h3>
-            <p className="text-slate-300 text-sm relative z-10 font-medium">완전 정복 가이드 리포트</p>
+            <p className="text-slate-300 text-sm relative z-10 font-medium group-hover:text-white transition-colors">완전 정복 가이드 리포트</p>
           </motion.a>
           
           <motion.a
             href="https://audio-mastering-ten.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.9)" }}
+            whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="block w-full text-left p-6 rounded-2xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-indigo-100 dark:hover:shadow-none hover:border-indigo-200 dark:hover:border-indigo-600 transition-all group"
+            className="block w-full text-left p-6 rounded-2xl bg-white/70 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-indigo-100 dark:hover:shadow-indigo-500/10 hover:border-indigo-200 dark:hover:border-indigo-500/50 transition-all group"
           >
             <h3 className="text-slate-900 dark:text-slate-100 text-xl font-bold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">오디오 마스터링</h3>
-            <p className="text-slate-600 dark:text-slate-300 text-sm font-medium">최종 음원 퀄리티 향상 기법</p>
+            <p className="text-slate-600 dark:text-slate-400 text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-slate-200 transition-colors">최종 음원 퀄리티 향상 기법</p>
           </motion.a>
         </div>
 
@@ -67,7 +67,7 @@ const StrategySection: React.FC = () => {
                 <motion.div 
                   key={tool.name}
                   whileHover={{ y: -2 }}
-                  className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all"
+                  className="text-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group-hover:border-slate-300 dark:group-hover:border-slate-600"
                 >
                   <span className="block font-extrabold text-slate-800 dark:text-slate-100 text-lg mb-1">{tool.name}</span>
                   <span className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">{tool.desc}</span>
