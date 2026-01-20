@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Rocket, 
@@ -6,11 +6,35 @@ import {
   Copy,
   Music,
   Wand2,
-  Image as ImageIcon
+  Image as ImageIcon,
+  History
 } from 'lucide-react';
-import { GlassCard, SectionTitle } from './SharedUI';
+import { GlassCard, SectionTitle, Modal, SimpleAccordion } from './SharedUI';
+
+const updateHistory = [
+  {
+    version: "V1.2",
+    date: "2026.02.20",
+    title: "앨범아트 생성기 및 UI 개선",
+    content: "• 앨범아트 전용 웹빌더 추가 (New App)\n• 복잡한 프롬프트 없이 클릭만으로 고퀄리티 앨범 아트 제작 가능\n• 메인 대시보드 다크모드 가독성 개선\n• 로그인 보안 프로세스 강화"
+  },
+  {
+    version: "V1.1",
+    date: "2026.01.15",
+    title: "Suno Studio Pro 통합 웹빌더 출시",
+    content: "• 기획, 구조, 가사, 프롬프트, 앨범아트 제작을 하나의 워크플로우로 통합\n• 프롬프트 랩 데이터베이스(240종) 연동\n• 반응형 모바일 뷰 최적화"
+  },
+  {
+    version: "V1.0",
+    date: "2026.01.01",
+    title: "Suno V5 Pro 서비스 런칭",
+    content: "• AI Studio API 연동 가이드 배포\n• 기초 프롬프트 메이커 공개\n• 수익화 전략 리포트(Alpha) 제공"
+  }
+];
 
 const AppsToolsSection: React.FC = () => {
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+
   return (
     <section className="mb-20">
       <SectionTitle 
@@ -18,16 +42,40 @@ const AppsToolsSection: React.FC = () => {
         title="Suno Studio Pro & 빌더앱" 
         colorClass="text-purple-500" 
         rightElement={
-          <a 
-            href="https://purchase-the-pro-version.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 rounded-xl bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-700/50 shadow-sm dark:shadow-inner hover:bg-indigo-50 dark:hover:bg-slate-700 hover:border-indigo-200 dark:hover:border-indigo-500 transition-all text-base font-bold flex items-center gap-2"
+          <button 
+            onClick={() => setShowUpdateModal(true)}
+            className="px-5 py-2.5 rounded-xl bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-700/50 shadow-sm dark:shadow-inner hover:bg-indigo-50 dark:hover:bg-slate-700 hover:border-indigo-200 dark:hover:border-indigo-500 transition-all text-sm md:text-base font-bold flex items-center gap-2 group"
           >
-            웹빌더 확인용 <ArrowRight className="w-5 h-5" />
-          </a>
+            <History className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
+            웹빌더 및 관련자료 업데이트
+          </button>
         }
       />
+
+      {/* Update History Modal */}
+      <Modal 
+        isOpen={showUpdateModal} 
+        onClose={() => setShowUpdateModal(false)} 
+        title="웹빌더 및 자료 업데이트 히스토리"
+      >
+        <div className="space-y-1">
+          {updateHistory.map((item, index) => (
+            <SimpleAccordion 
+              key={index} 
+              date={item.date} 
+              title={`[${item.version}] ${item.title}`}
+            >
+              {item.content}
+            </SimpleAccordion>
+          ))}
+        </div>
+        <div className="mt-8 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-700 text-center">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            모든 업데이트는 기존 구매자분들에게 무료로 제공됩니다.<br/>
+            새로운 기능이 추가되면 이 곳에서 확인해주세요.
+          </p>
+        </div>
+      </Modal>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <GlassCard className="p-8 relative overflow-hidden group h-full flex flex-col justify-between">

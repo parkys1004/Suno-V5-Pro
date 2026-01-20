@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Zap, Disc, Moon, Sun } from 'lucide-react';
+import { ChevronDown, Zap, Disc, Moon, Sun, X } from 'lucide-react';
 
 export const GlassCard = ({ children, className = "", hoverEffect = true }: { children?: React.ReactNode; className?: string; hoverEffect?: boolean }) => (
   <motion.div
@@ -60,6 +60,103 @@ export const AccordionItem = ({ title, children, delay }: { title: string; child
         </AnimatePresence>
       </div>
     </motion.div>
+  );
+};
+
+export const SimpleAccordion = ({ title, date, children }: { title: string; date: string; children?: React.ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-slate-200 dark:border-slate-700 last:border-0">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between py-4 px-2 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-lg"
+      >
+        <div className="flex flex-col items-start gap-1">
+          <span className="text-sm text-indigo-500 dark:text-indigo-400 font-bold">{date}</span>
+          <span className="font-bold text-slate-900 dark:text-slate-100 text-base md:text-lg">{title}</span>
+        </div>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ChevronDown className="w-5 h-5 text-slate-400" />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="py-3 px-4 text-slate-600 dark:text-slate-300 text-sm md:text-base bg-slate-50 dark:bg-slate-800/30 rounded-lg mb-4 leading-relaxed whitespace-pre-line">
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose: () => void; title: string; children?: React.ReactNode }) => {
+  // Prevent scrolling when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm z-[60]"
+          />
+          {/* Modal Content */}
+          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 10 }}
+              className="bg-white dark:bg-[#0f172a] w-full max-w-2xl max-h-[80vh] rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 pointer-events-auto flex flex-col overflow-hidden"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-slate-100 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span className="w-2 h-6 bg-indigo-500 rounded-full inline-block"></span>
+                  {title}
+                </h3>
+                <button 
+                  onClick={onClose}
+                  className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              
+              {/* Body */}
+              <div className="p-6 overflow-y-auto custom-scrollbar">
+                {children}
+              </div>
+            </motion.div>
+          </div>
+        </>
+      )}
+    </AnimatePresence>
   );
 };
 

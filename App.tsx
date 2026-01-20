@@ -8,6 +8,7 @@ import { ThemeToggle, GlassCard } from './components/SharedUI';
 import ApiGuideSection from './components/ApiGuideSection';
 import AppsToolsSection from './components/AppsToolsSection';
 import StrategySection from './components/StrategySection';
+import MusicPlayer from './components/MusicPlayer';
 
 // --- Main App Component ---
 
@@ -231,6 +232,14 @@ const App: React.FC = () => {
                 >
                   AI Studio와 Suno로 시작하는 나만의 음악 제작 여정
                 </motion.p>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                  className="text-slate-500 dark:text-slate-400 text-sm md:text-base mt-2 font-medium"
+                >
+                  관련 자료 포함, 빌더앱은 계속 업데이트됩니다.
+                </motion.p>
               </header>
 
               {/* Section 1: API Guide */}
@@ -249,6 +258,9 @@ const App: React.FC = () => {
             </motion.main>
           )}
         </AnimatePresence>
+
+        {/* Global Music Player - Always Visible, Admin status passed */}
+        <MusicPlayer isAdmin={isAuthenticated} />
         
         {/* Global CSS for custom animations */}
         <style>{`
