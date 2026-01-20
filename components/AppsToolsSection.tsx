@@ -13,8 +13,8 @@ import { GlassCard, SectionTitle, Modal, SimpleAccordion } from './SharedUI';
 
 const updateHistory = [
   {
-    version: "V1.2",
-    date: "2026.02.20",
+    version: "V1.0",
+    date: "2026.01.17",
     title: "앨범아트 생성기 및 UI 개선",
     content: "• 앨범아트 전용 웹빌더 추가 (New App)\n• 복잡한 프롬프트 없이 클릭만으로 고퀄리티 앨범 아트 제작 가능\n• 메인 대시보드 다크모드 가독성 개선\n• 로그인 보안 프로세스 강화"
   },

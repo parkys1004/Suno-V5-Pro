@@ -8,7 +8,6 @@ import { ThemeToggle, GlassCard } from './components/SharedUI';
 import ApiGuideSection from './components/ApiGuideSection';
 import AppsToolsSection from './components/AppsToolsSection';
 import StrategySection from './components/StrategySection';
-import MusicPlayer from './components/MusicPlayer';
 
 // --- Main App Component ---
 
@@ -258,9 +257,6 @@ const App: React.FC = () => {
             </motion.main>
           )}
         </AnimatePresence>
-
-        {/* Global Music Player - Always Visible, Admin status passed */}
-        <MusicPlayer isAdmin={isAuthenticated} />
         
         {/* Global CSS for custom animations */}
         <style>{`

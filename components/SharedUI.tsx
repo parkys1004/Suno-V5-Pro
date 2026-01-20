@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Zap, Disc, Moon, Sun, X } from 'lucide-react';
 
-export const GlassCard = ({ children, className = "", hoverEffect = true }: { children?: React.ReactNode; className?: string; hoverEffect?: boolean }) => (
+interface GlassCardProps {
+  children?: React.ReactNode;
+  className?: string;
+  hoverEffect?: boolean;
+}
+
+export const GlassCard: React.FC<GlassCardProps> = ({ children, className = "", hoverEffect = true }) => (
   <motion.div
     whileHover={hoverEffect ? { y: -5, boxShadow: "0 20px 40px -5px rgba(99, 102, 241, 0.15)" } : {}}
     initial={{ opacity: 0, y: 20 }}
@@ -15,7 +21,13 @@ export const GlassCard = ({ children, className = "", hoverEffect = true }: { ch
   </motion.div>
 );
 
-export const AccordionItem = ({ title, children, delay }: { title: string; children?: React.ReactNode; delay: number }) => {
+interface AccordionItemProps {
+  title: string;
+  children?: React.ReactNode;
+  delay: number;
+}
+
+export const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, delay }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -63,7 +75,13 @@ export const AccordionItem = ({ title, children, delay }: { title: string; child
   );
 };
 
-export const SimpleAccordion = ({ title, date, children }: { title: string; date: string; children?: React.ReactNode }) => {
+interface SimpleAccordionProps {
+  title: string;
+  date: string;
+  children?: React.ReactNode;
+}
+
+export const SimpleAccordion: React.FC<SimpleAccordionProps> = ({ title, date, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -101,7 +119,14 @@ export const SimpleAccordion = ({ title, date, children }: { title: string; date
   );
 };
 
-export const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose: () => void; title: string; children?: React.ReactNode }) => {
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children?: React.ReactNode;
+}
+
+export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   // Prevent scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -160,7 +185,14 @@ export const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; o
   );
 };
 
-export const SectionTitle = ({ icon: Icon, title, colorClass, rightElement }: { icon: any; title: string; colorClass: string; rightElement?: React.ReactNode }) => (
+interface SectionTitleProps {
+  icon: any;
+  title: string;
+  colorClass: string;
+  rightElement?: React.ReactNode;
+}
+
+export const SectionTitle: React.FC<SectionTitleProps> = ({ icon: Icon, title, colorClass, rightElement }) => (
   <motion.div 
     initial={{ opacity: 0, x: -20 }}
     whileInView={{ opacity: 1, x: 0 }}
@@ -177,7 +209,12 @@ export const SectionTitle = ({ icon: Icon, title, colorClass, rightElement }: { 
   </motion.div>
 );
 
-export const ThemeToggle = ({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: (val: boolean) => void }) => {
+interface ThemeToggleProps {
+  darkMode: boolean;
+  setDarkMode: (val: boolean) => void;
+}
+
+export const ThemeToggle: React.FC<ThemeToggleProps> = ({ darkMode, setDarkMode }) => {
   return (
     <motion.button
       whileHover={{ scale: 1.05 }}
