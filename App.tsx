@@ -201,10 +201,10 @@ const App: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="max-w-5xl mx-auto p-4 md:p-8 relative z-10 w-full"
+              className="w-full max-w-[1920px] mx-auto px-4 md:px-6 lg:px-8 pb-12 relative z-10"
             >
               {/* Header */}
-              <header className="text-center mb-16 pt-10">
+              <header className="text-center mb-12 pt-10">
                 <motion.div
                   initial={{ opacity: 0, y: -50 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -241,17 +241,27 @@ const App: React.FC = () => {
                 </motion.p>
               </header>
 
-              {/* Section 1: API Guide */}
-              <ApiGuideSection />
+              {/* 2-Column Grid Layout */}
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 xl:gap-16 relative">
+                
+                {/* Center Divider - Only visible on XL screens */}
+                <div className="hidden xl:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-slate-200 dark:via-slate-800 to-transparent -translate-x-1/2" />
 
-              {/* Section 2: Apps & Tools */}
-              <AppsToolsSection />
+                {/* Left Column: Apps & Tools */}
+                <div className="space-y-8 w-full">
+                  <AppsToolsSection />
+                </div>
 
-              {/* Section 3: Strategy */}
-              <StrategySection />
+                {/* Right Column: Guides & Strategy */}
+                <div className="space-y-8 w-full">
+                  <ApiGuideSection />
+                  <StrategySection />
+                </div>
+
+              </div>
 
               {/* Footer */}
-              <footer className="text-center py-10 border-t border-slate-200/50 dark:border-slate-700/50 mt-20">
+              <footer className="text-center py-10 border-t border-slate-200/50 dark:border-slate-700/50 mt-16">
                 <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">© 2026 방구석 음악만들기 - Suno Studio Pro Project</p>
               </footer>
             </motion.main>

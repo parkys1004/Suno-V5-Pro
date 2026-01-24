@@ -7,9 +7,13 @@ import {
   Music,
   Wand2,
   Image as ImageIcon,
-  History
+  History,
+  BookOpen,
+  Construction,
+  Sparkles,
+  Video
 } from 'lucide-react';
-import { GlassCard, SectionTitle, Modal, SimpleAccordion } from './SharedUI';
+import { GlassCard, SectionTitle, Modal, SimpleAccordion, AccordionItem } from './SharedUI';
 
 const updateHistory = [
   {
@@ -36,7 +40,7 @@ const AppsToolsSection: React.FC = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
   return (
-    <section className="mb-20">
+    <section>
       <SectionTitle 
         icon={Rocket} 
         title="Suno Studio Pro & 빌더앱" 
@@ -78,7 +82,7 @@ const AppsToolsSection: React.FC = () => {
       </Modal>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <GlassCard className="p-8 relative overflow-hidden group h-full flex flex-col justify-between">
+        <GlassCard className="p-8 relative overflow-hidden group h-full flex flex-col justify-between md:col-span-2">
           <div className="absolute top-0 right-0 p-3 opacity-10 dark:opacity-20 group-hover:opacity-20 dark:group-hover:opacity-30 transition-opacity">
              <Music className="w-24 h-24 text-indigo-600 dark:text-indigo-400 transform rotate-12" />
           </div>
@@ -103,25 +107,153 @@ const AppsToolsSection: React.FC = () => {
           </motion.a>
         </GlassCard>
 
-        <GlassCard className="p-8 border-dashed border-2 border-indigo-200 dark:border-indigo-800 bg-white/50 dark:bg-slate-800/50 h-full flex flex-col justify-between group hover:border-indigo-400 dark:hover:border-indigo-600">
-           <div>
-              <div className="flex items-center gap-2 mb-4">
-                 <Wand2 className="w-5 h-5 text-slate-500 dark:text-slate-400 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors" />
-                 <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Database</span>
+        {/* Manual Link Box */}
+        <GlassCard className="p-6 md:col-span-2 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-blue-100 dark:border-blue-900/30 group">
+           <div className="flex items-center gap-5 w-full md:w-auto">
+              <div className="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+                 <BookOpen className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Suno V5 Prompt Lab</h3>
-              <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-medium">40가지 장르 x 각 6개 프롬프트<br/>(총 240세트) 데이터베이스</p>
+              <div className="flex-1">
+                 <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 flex-wrap">
+                   Suno Studio Pro 메뉴얼
+                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800 font-extrabold tracking-wide">GUIDE</span>
+                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-600 font-extrabold tracking-wide">준비중</span>
+                 </h3>
+                 <p className="text-slate-600 dark:text-slate-400 text-sm font-medium mt-1">
+                    웹빌더 사용법, 프롬프트 가이드, 문제 해결 방법 등 상세 가이드
+                 </p>
+              </div>
            </div>
            <motion.a 
-              href="https://v0-prompt-lab-pro-mvt4.vercel.app"
+              href="https://manual-two-omega.vercel.app" 
               target="_blank"
               rel="noopener noreferrer"
-              whileTap={{ scale: 0.95 }}
-              className="w-full py-3.5 bg-slate-900 dark:bg-gradient-to-b dark:from-slate-100 dark:to-slate-300 text-white dark:text-slate-900 rounded-xl font-bold flex items-center justify-center gap-2 group-hover:bg-purple-600 dark:hover:brightness-110 transition-all shadow-lg dark:shadow-purple-500/10 border border-transparent dark:border-white/50 cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full md:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 transition-all shrink-0"
            >
-              Prompt Lab 바로가기 <ArrowRight className="w-4 h-4" />
+              메뉴얼 보기 <ArrowRight className="w-4 h-4" />
            </motion.a>
         </GlassCard>
+
+        {/* Manual Details Accordion (Tips) */}
+        <div className="md:col-span-2">
+           <AccordionItem 
+             title="Suno에서 음악 만들때 도움되는 꿀팁" 
+             delay={0.1}
+             className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border-amber-200 dark:border-amber-800/50"
+           >
+              <div className="grid grid-cols-1 gap-4">
+                
+                {/* 1. Prompt Lab (Moved from Grid) */}
+                <motion.a 
+                  href="https://v0-prompt-lab-pro-mvt4.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="flex items-center justify-between p-5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 transition-all group cursor-pointer"
+                >
+                   <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400 shrink-0">
+                         <Wand2 className="w-6 h-6" />
+                      </div>
+                      <div>
+                         <div className="flex items-center gap-2 mb-1">
+                            <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Suno V5 Prompt Lab</h4>
+                            <span className="text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-600">DATABASE</span>
+                         </div>
+                         <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">40가지 장르 x 각 6개 프롬프트 (총 240세트) 데이터베이스</p>
+                      </div>
+                   </div>
+                   <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-700 text-slate-400 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all">
+                      <ArrowRight className="w-5 h-5" />
+                   </div>
+                </motion.a>
+
+                {/* 2. SFX Guide */}
+                <motion.a 
+                  href="https://suno-sfx-master-guide.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="flex items-center justify-between p-5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 transition-all group cursor-pointer"
+                >
+                   <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                         <Sparkles className="w-6 h-6" />
+                      </div>
+                      <div>
+                         <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">SUNO SFX MASTER GUIDE</h4>
+                         <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">Suno 음악 퀄리티를 높여주는 효과음(SFX) 완벽 가이드</p>
+                      </div>
+                   </div>
+                   <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-700 text-slate-400 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all">
+                      <ArrowRight className="w-5 h-5" />
+                   </div>
+                </motion.a>
+
+                {/* 3. Video Tools Comparison */}
+                <motion.a 
+                  href="https://v0-ai-video-model-battle-s9wm.vercel.app" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="block p-5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-400 transition-all group cursor-pointer"
+                >
+                   <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center text-red-600 dark:text-red-400 shrink-0">
+                            <Video className="w-6 h-6" />
+                        </div>
+                        <div>
+                            <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">뮤직비디오 제작 도구 비교</h4>
+                            <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">Kling O1, Runway Gen-3, Google Veo 성능 분석</p>
+                        </div>
+                      </div>
+                      <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-700 text-slate-400 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all">
+                        <ArrowRight className="w-5 h-5" />
+                      </div>
+                   </div>
+                   
+                   <div className="grid grid-cols-3 gap-2">
+                      {[
+                        { name: "Kling O1", desc: "Realistic" },
+                        { name: "Runway", desc: "Creative" },
+                        { name: "Google Veo", desc: "Fidelity" }
+                      ].map((tool) => (
+                        <div key={tool.name} className="text-center p-2 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-600">
+                           <span className="block text-xs font-bold text-slate-800 dark:text-slate-200">{tool.name}</span>
+                           <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider">{tool.desc}</span>
+                        </div>
+                      ))}
+                   </div>
+                </motion.a>
+              </div>
+           </AccordionItem>
+        </div>
+
+        {/* Audio Mastering (Moved from Strategy) */}
+        <motion.a
+            href="https://audio-mastering-ten.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="block w-full text-left p-6 rounded-2xl bg-white/70 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-indigo-100 dark:hover:shadow-indigo-500/10 hover:border-indigo-200 dark:hover:border-indigo-500/50 transition-all group md:col-span-2"
+        >
+            <div className="flex items-center justify-between">
+                <div>
+                    <h3 className="text-slate-900 dark:text-slate-100 text-xl font-bold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">프로페셔널 오디오 마스터링 의 혁신</h3>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-slate-200 transition-colors">드래그 앤 드롭으로 지연 시간 없이 즉시 마스터링됩니다.</p>
+                </div>
+                <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-400 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all">
+                    <ArrowRight className="w-5 h-5" />
+                </div>
+            </div>
+        </motion.a>
 
         <GlassCard className="p-8 relative overflow-hidden group h-full flex flex-col justify-between md:col-span-2 border-pink-200 dark:border-pink-900/30">
           <div className="absolute top-0 right-0 p-3 opacity-10 dark:opacity-20 group-hover:opacity-20 dark:group-hover:opacity-30 transition-opacity">

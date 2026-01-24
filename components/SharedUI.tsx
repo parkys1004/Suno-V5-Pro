@@ -25,10 +25,14 @@ interface AccordionItemProps {
   title: string;
   children?: React.ReactNode;
   delay: number;
+  className?: string;
 }
 
-export const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, delay }) => {
+export const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, delay, className = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  // If className is provided, use it. Otherwise use default bg/border.
+  const baseStyle = className || 'bg-white/80 dark:bg-slate-800/60 border-white/50 dark:border-slate-700/50';
 
   return (
     <motion.div
@@ -38,12 +42,13 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, d
       className="group"
     >
       <div className={`
-        bg-white/80 dark:bg-slate-800/60 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 dark:border-slate-700/50 shadow-sm transition-all duration-300
+        backdrop-blur-md rounded-2xl overflow-hidden border shadow-sm transition-all duration-300
+        ${baseStyle}
         ${isOpen ? 'ring-2 ring-indigo-200 dark:ring-indigo-800 shadow-md' : 'hover:border-indigo-200 dark:hover:border-indigo-800'}
       `}>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between p-5 cursor-pointer bg-transparent hover:bg-indigo-50/50 dark:hover:bg-slate-700/50 transition-colors"
+          className="w-full flex items-center justify-between p-5 cursor-pointer bg-transparent hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
         >
           <span className="font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-3">
             {isOpen ? <Zap className="w-4 h-4 text-indigo-500 dark:text-indigo-400" /> : <Disc className="w-4 h-4 text-slate-400" />}
@@ -64,7 +69,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ title, children, d
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <div className="p-6 text-slate-700 dark:text-slate-300 leading-relaxed border-t border-indigo-50 dark:border-slate-700 bg-white/40 dark:bg-slate-800/40 font-medium">
+              <div className="p-6 text-slate-700 dark:text-slate-300 leading-relaxed border-t border-black/5 dark:border-white/10 bg-white/40 dark:bg-slate-800/40 font-medium">
                 {children}
               </div>
             </motion.div>

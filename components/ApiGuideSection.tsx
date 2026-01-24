@@ -13,7 +13,7 @@ import { AccordionItem, SectionTitle } from './SharedUI';
 
 const ApiGuideSection: React.FC = () => {
   return (
-    <section className="mb-20">
+    <section>
       <SectionTitle icon={Key} title="AI Studio 설정 가이드" colorClass="text-indigo-500" />
       
       <div className="space-y-4">
