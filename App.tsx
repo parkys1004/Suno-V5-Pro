@@ -24,8 +24,8 @@ const hashPassword = async (password: string) => {
 };
 
 const App: React.FC = () => {
-  // Default to dark mode (true)
-  const [darkMode, setDarkMode] = useState(true);
+  // Default to light mode (false)
+  const [darkMode, setDarkMode] = useState(false);
   
   // Auth States
   const [isAuthenticated, setIsAuthenticated] = useState(false);
