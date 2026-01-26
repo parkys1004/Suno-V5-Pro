@@ -17,6 +17,12 @@ import { GlassCard, SectionTitle, Modal, SimpleAccordion, AccordionItem } from '
 
 const updateHistory = [
   {
+    version: "V1.5",
+    date: "2026.01.26",
+    title: "Suno Studio Pro 업데이트",
+    content: "• 통합 웹빌더 기능 고도화 및 안정성 개선\n• 사용자 피드백을 반영한 UI/UX 최적화"
+  },
+  {
     version: "V1.0",
     date: "2026.01.17",
     title: "앨범아트 생성기 및 UI 개선",
@@ -91,9 +97,9 @@ const AppsToolsSection: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block shadow-lg shadow-indigo-200 dark:shadow-indigo-900/50"
             >
-              V1.1 UPDATE
+              V1.5 UPDATE
             </motion.span>
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Suno Studio Pro V1.1</h3>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Suno Studio Pro V1.5</h3>
             <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-medium">기획, 구조, 가사, 프롬프트, 앨범아트 제작까지 한 번에 해결하는 통합 웹빌더입니다.</p>
           </div>
           <motion.a 

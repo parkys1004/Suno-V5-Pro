@@ -4,7 +4,8 @@ import {
   Lightbulb, 
   Globe,
   TrendingUp,
-  FileCheck
+  FileCheck,
+  Layers
 } from 'lucide-react';
 import { GlassCard, SectionTitle } from './SharedUI';
 
@@ -82,6 +83,36 @@ const StrategySection: React.FC = () => {
               </motion.a>
            </div>
         </div>
+
+        {/* Suno AI Resource Hub Link */}
+        <motion.a
+           href="https://suno-ai-resource-hub.vercel.app"
+           target="_blank"
+           rel="noopener noreferrer"
+           whileHover={{ scale: 1.02, y: -2 }}
+           whileTap={{ scale: 0.98 }}
+           className="block w-full p-6 rounded-2xl bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-800/50 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-indigo-400 dark:hover:border-indigo-500 transition-all group relative overflow-hidden"
+        >
+            <div className="absolute top-0 right-0 p-4 opacity-5 dark:opacity-10 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity">
+               <Layers className="w-24 h-24 text-indigo-500 transform rotate-6" />
+            </div>
+            <div className="relative z-10 flex items-center justify-between">
+               <div>
+                  <div className="flex items-center gap-2 mb-2">
+                     <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-700">HUB</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                     Suno AI Resource Hub
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">
+                     Suno AI 관련 모든 리소스와 도구를 한곳에서 확인하세요.
+                  </p>
+               </div>
+               <div className="hidden sm:flex w-10 h-10 rounded-full bg-white dark:bg-slate-700 items-center justify-center text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 shadow-sm">
+                  <Layers className="w-5 h-5" />
+               </div>
+            </div>
+        </motion.a>
       </div>
     </section>
   );
