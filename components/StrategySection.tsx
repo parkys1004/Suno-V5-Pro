@@ -17,7 +17,7 @@ const StrategySection: React.FC = () => {
       <div className="space-y-6">
         <div className="grid grid-cols-1 gap-6">
           <motion.a
-            href="https://suno-ai-biz-2026.vercel.app"
+            href="https://suno-ai-biz-2026-a.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02, y: -2 }}
