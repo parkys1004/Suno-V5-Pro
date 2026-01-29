@@ -8,7 +8,6 @@ import { ThemeToggle, GlassCard } from './components/SharedUI';
 import ApiGuideSection from './components/ApiGuideSection';
 import AppsToolsSection from './components/AppsToolsSection';
 import StrategySection from './components/StrategySection';
-import ChatWidget from './components/ChatWidget';
 
 // --- Main App Component ---
 
@@ -117,9 +116,6 @@ const App: React.FC = () => {
         >
            <MessageCircle className="w-6 h-6 fill-current" />
         </motion.a>
-
-        {/* AI Chat Widget (Bottom Left) */}
-        {isAuthenticated && <ChatWidget />}
 
         <AnimatePresence mode="wait">
           {!isAuthenticated ? (

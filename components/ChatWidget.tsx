@@ -22,15 +22,44 @@ const ChatWidget: React.FC = () => {
     }
   }, [messages, isOpen]);
 
+  // Helper to safely get API Key from various environment patterns
+  const getApiKey = () => {
+    try {
+        // 1. Standard process.env (Node/Webpack)
+        if (typeof process !== 'undefined' && process.env?.API_KEY) {
+            return process.env.API_KEY;
+        }
+        // 2. Vite (import.meta.env)
+        // @ts-ignore
+        if (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_KEY) {
+            // @ts-ignore
+            return import.meta.env.VITE_API_KEY;
+        }
+        // 3. Create React App
+        if (typeof process !== 'undefined' && process.env?.REACT_APP_API_KEY) {
+            return process.env.REACT_APP_API_KEY;
+        }
+        // 4. Next.js Public
+        if (typeof process !== 'undefined' && process.env?.NEXT_PUBLIC_API_KEY) {
+            return process.env.NEXT_PUBLIC_API_KEY;
+        }
+    } catch (e) {
+        console.warn("Environment variable access warning:", e);
+    }
+    return null;
+  };
+
   // Initialize Chat
   const getChat = () => {
     if (chatRef.current) return chatRef.current;
     
-    // Use process.env.API_KEY as per instructions
-    const apiKey = process.env.API_KEY;
+    const apiKey = getApiKey();
     
     // If no key, return null (handle gracefully)
-    if (!apiKey) return null;
+    if (!apiKey) {
+        console.error("API Key missing. Checked: API_KEY, VITE_API_KEY, REACT_APP_API_KEY, NEXT_PUBLIC_API_KEY");
+        return null;
+    }
 
     const ai = new GoogleGenAI({ apiKey });
     const chat = ai.chats.create({
@@ -55,9 +84,12 @@ const ChatWidget: React.FC = () => {
     try {
       const chat = getChat();
       if (!chat) {
-         // Simulation for demo if no API key is present
+         // Simulation for demo/error feedback if no API key is found
          setTimeout(() => {
-             setMessages(prev => [...prev, { role: 'model', text: "⚠️ API Key가 설정되지 않았습니다. 개발 환경에서 process.env.API_KEY를 확인해주세요." }]);
+             setMessages(prev => [...prev, { 
+                 role: 'model', 
+                 text: "⚠️ **API Key를 찾을 수 없습니다.**\n\n배포 환경(Vercel 등)에 따라 변수명 앞에 접두사가 필요할 수 있습니다.\n\n[해결 방법]\nVercel 환경 변수 설정에서 아래 이름들로 키를 추가해보세요:\n1. `VITE_API_KEY`\n2. `REACT_APP_API_KEY`\n\n설정 후 반드시 **Redeploy** 해야 적용됩니다." 
+             }]);
              setIsLoading(false);
          }, 500);
          return;
@@ -130,7 +162,7 @@ const ChatWidget: React.FC = () => {
                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                     <div className={`
-                        max-w-[85%] p-3.5 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap shadow-sm
+                        max-w-[85%] p-3.5 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap shadow-sm break-words
                         ${msg.role === 'user' 
                             ? 'bg-indigo-600 text-white rounded-tr-none' 
                             : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-tl-none'}
