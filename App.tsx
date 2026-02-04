@@ -235,10 +235,57 @@ const App: React.FC = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7 }}
-                  className="text-slate-500 dark:text-slate-400 text-sm md:text-base mt-2 font-medium"
+                  className="text-slate-500 dark:text-slate-400 text-sm md:text-base mt-2 font-medium mb-12"
                 >
                   관련 자료 포함, 빌더앱은 계속 업데이트됩니다.
                 </motion.p>
+
+                {/* V1.6 Announcement Banner */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ delay: 0.9, type: "spring", bounce: 0.4 }}
+                  className="relative max-w-3xl mx-auto"
+                >
+                    {/* Background Glow */}
+                    <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-2xl blur-md opacity-20 animate-pulse" />
+                    
+                    <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-purple-100 dark:border-purple-800/50 rounded-2xl p-6 md:p-8 shadow-xl overflow-hidden">
+                       <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
+                       <div className="absolute bottom-0 left-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl -ml-10 -mb-10 pointer-events-none" />
+
+                       <div className="relative flex flex-col items-center text-center gap-4">
+                          <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-[10px] md:text-xs font-extrabold tracking-[0.2em] shadow-lg shadow-indigo-500/30 border border-white/20">
+                             COMING SOON
+                          </span>
+                          
+                          <h2 className="text-2xl md:text-4xl font-black text-slate-900 dark:text-white leading-tight">
+                             Suno Studio Pro<br className="md:hidden" />
+                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-violet-600 ml-0 md:ml-2">
+                                V1.6 업데이트 예정
+                             </span>
+                          </h2>
+                          
+                          <div className="flex flex-wrap justify-center gap-3 mt-2">
+                             <div className="px-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 flex items-center gap-2 shadow-sm">
+                                <span className="text-lg">🎤</span>
+                                <span className="font-bold text-slate-700 dark:text-slate-200 text-sm md:text-base">가사 치트키</span>
+                             </div>
+                             <div className="px-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 flex items-center gap-2 shadow-sm">
+                                <span className="text-lg">⚡</span>
+                                <span className="font-bold text-slate-700 dark:text-slate-200 text-sm md:text-base">프롬프트 치트키</span>
+                             </div>
+                             <div className="px-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 flex items-center gap-2 shadow-sm">
+                                <span className="text-lg">💰</span>
+                                <div className="flex flex-col items-start leading-none">
+                                   <span className="font-bold text-slate-700 dark:text-slate-200 text-sm md:text-base">생성 모델 선택</span>
+                                   <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">유료키 사용 시 비용 절감</span>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                </motion.div>
               </header>
 
               {/* 2-Column Grid Layout */}
