@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Rocket, 
   ArrowRight, 
@@ -45,6 +45,7 @@ const updateHistory = [
 
 const AppsToolsSection: React.FC = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [showSpectrumTooltip, setShowSpectrumTooltip] = useState(false);
 
   return (
     <section>
@@ -261,6 +262,46 @@ const AppsToolsSection: React.FC = () => {
                 </div>
             </div>
         </motion.a>
+
+        {/* Spectrum Studio (New) */}
+        <motion.div
+            onClick={() => {
+                setShowSpectrumTooltip(true);
+                setTimeout(() => setShowSpectrumTooltip(false), 2000);
+            }}
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="block w-full text-left p-6 rounded-2xl bg-white/70 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-indigo-100 dark:hover:shadow-indigo-500/10 hover:border-indigo-200 dark:hover:border-indigo-500/50 transition-all group md:col-span-2 relative overflow-hidden cursor-pointer"
+        >
+            <AnimatePresence>
+                {showSpectrumTooltip && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute inset-0 z-20 flex items-center justify-center bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm"
+                    >
+                         <div className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-3 rounded-full font-bold shadow-xl flex items-center gap-2 transform scale-110">
+                            <span className="text-xl">🚧</span>
+                            <span>아직 준비중인 서비스입니다!</span>
+                         </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <div className="flex items-center justify-between">
+                <div>
+                    <div className="flex items-center gap-2 mb-2">
+                        <h3 className="text-slate-900 dark:text-slate-100 text-xl font-bold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">스펙트럼 스튜디오 Beta버전</h3>
+                        <span className="text-[10px] bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded-full font-bold border border-indigo-200 dark:border-indigo-800">Beta</span>
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm font-medium group-hover:text-slate-900 dark:group-hover:text-slate-200 transition-colors">플레이리스트 제작도구, 스펙트럼과 효과가 들어간 MP4영상</p>
+                </div>
+                <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-400 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all">
+                    <ArrowRight className="w-5 h-5" />
+                </div>
+            </div>
+        </motion.div>
 
         <GlassCard className="p-8 relative overflow-hidden group h-full flex flex-col justify-between md:col-span-2 border-pink-200 dark:border-pink-900/30">
           <div className="absolute top-0 right-0 p-3 opacity-10 dark:opacity-20 group-hover:opacity-20 dark:group-hover:opacity-30 transition-opacity">
