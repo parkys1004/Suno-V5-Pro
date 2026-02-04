@@ -11,7 +11,8 @@ import {
   BookOpen,
   Construction,
   Sparkles,
-  Video
+  Video,
+  Mic
 } from 'lucide-react';
 import { GlassCard, SectionTitle, Modal, SimpleAccordion, AccordionItem } from './SharedUI';
 
@@ -97,9 +98,9 @@ const AppsToolsSection: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block shadow-lg shadow-indigo-200 dark:shadow-indigo-900/50"
             >
-              V1.5 UPDATE
+              V1.6 UPDATE
             </motion.span>
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Suno Studio Pro V1.5</h3>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Suno Studio Pro V1.6</h3>
             <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-medium">기획, 구조, 가사, 프롬프트, 앨범아트 제작까지 한 번에 해결하는 통합 웹빌더입니다.</p>
           </div>
           <motion.a 
@@ -177,9 +178,9 @@ const AppsToolsSection: React.FC = () => {
                    </div>
                 </motion.a>
 
-                {/* 2. SFX Guide */}
+                {/* 2. Lyrics Cheat Keys (Replaced SFX Guide) */}
                 <motion.a 
-                  href="https://suno-sfx-master-guide.vercel.app"
+                  href="https://suno-lyrics-cheat-key.vercel.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.01 }}
@@ -188,11 +189,11 @@ const AppsToolsSection: React.FC = () => {
                 >
                    <div className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
-                         <Sparkles className="w-6 h-6" />
+                         <Mic className="w-6 h-6" />
                       </div>
                       <div>
-                         <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">SUNO SFX MASTER GUIDE</h4>
-                         <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">Suno 음악 퀄리티를 높여주는 효과음(SFX) 완벽 가이드</p>
+                         <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Suno v5 Cheat Keys(가사)</h4>
+                         <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">가사 작성 시 유용한 메타태그 및 구조 치트키 모음</p>
                       </div>
                    </div>
                    <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-700 text-slate-400 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/50 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all">

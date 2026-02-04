@@ -7,7 +7,11 @@ import {
   CreditCard,
   AlertTriangle,
   CheckCircle2,
-  Image as ImageIcon
+  Image as ImageIcon,
+  BatteryCharging,
+  MousePointerClick,
+  ShieldAlert,
+  AlertCircle
 } from 'lucide-react';
 import { AccordionItem, SectionTitle } from './SharedUI';
 
@@ -339,6 +343,139 @@ const ApiGuideSection: React.FC = () => {
                 </ul>
               </div>
            </div>
+        </AccordionItem>
+
+        <AccordionItem 
+          title="Suno Studio Pro: 무료 API 키 200% 활용 가이드" 
+          delay={0.4}
+          className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 dark:from-indigo-900/40 dark:via-purple-900/40 dark:to-pink-900/40 border-indigo-200 dark:border-indigo-700 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800"
+        >
+          <div className="space-y-8">
+            <div className="bg-white/60 dark:bg-slate-900/60 p-5 rounded-xl text-base text-slate-700 dark:text-slate-200 border border-white/50 dark:border-slate-700 font-medium backdrop-blur-sm">
+               Google AI Studio의 무료 등급(Free Tier) API 키를 사용 중이신가요? <br className="hidden md:block"/>
+               제한된 할당량 안에서도 끊김 없이 고성능 AI 기능을 즐길 수 있는 <strong>최적의 설정법</strong>을 공개합니다.
+            </div>
+
+            {/* 1. Model Limits */}
+            <div>
+                <h4 className="flex items-center gap-2 font-bold text-slate-900 dark:text-white mb-3 text-lg md:text-xl">
+                    <span className="p-1.5 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg text-indigo-600 dark:text-indigo-400"><BatteryCharging className="w-5 h-5"/></span>
+                    1. 모델별 한도 및 추천 용도
+                </h4>
+                <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm bg-white/50 dark:bg-slate-800/50">
+                    <table className="w-full text-sm md:text-base text-left border-collapse">
+                        <thead className="bg-slate-100/80 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold">
+                            <tr>
+                                <th className="p-3 md:p-4 whitespace-nowrap">구분</th>
+                                <th className="p-3 md:p-4 whitespace-nowrap">추천 모드</th>
+                                <th className="p-3 md:p-4 whitespace-nowrap">일일 제한 (RPD)</th>
+                                <th className="p-3 md:p-4 min-w-[200px]">주요 특징</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+                             <tr className="bg-white/50 dark:bg-slate-900/30">
+                                <td className="p-3 md:p-4 font-bold text-slate-700 dark:text-slate-300">메인 작업</td>
+                                <td className="p-3 md:p-4 text-indigo-600 dark:text-indigo-400 font-bold">Stable (3.0 Flash)</td>
+                                <td className="p-3 md:p-4"><span className="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold">1,500회</span></td>
+                                <td className="p-3 md:p-4 text-slate-600 dark:text-slate-400 text-sm">속도가 매우 빠르고 사실상 무제한에 가깝습니다.</td>
+                             </tr>
+                             <tr className="bg-slate-50/50 dark:bg-slate-800/30">
+                                <td className="p-3 md:p-4 font-bold text-slate-700 dark:text-slate-300">심층 분석</td>
+                                <td className="p-3 md:p-4 text-purple-600 dark:text-purple-400 font-bold">Pro (3.0 Pro)</td>
+                                <td className="p-3 md:p-4"><span className="px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-bold">50회 미만</span></td>
+                                <td className="p-3 md:p-4 text-slate-600 dark:text-slate-400 text-sm">추론 능력이 뛰어나지만, 남용 시 금방 차단됩니다.</td>
+                             </tr>
+                             <tr className="bg-white/50 dark:bg-slate-900/30">
+                                <td className="p-3 md:p-4 font-bold text-slate-700 dark:text-slate-300">가사 교정</td>
+                                <td className="p-3 md:p-4 text-blue-600 dark:text-blue-400 font-bold">Lyrics Editor</td>
+                                <td className="p-3 md:p-4"><span className="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold">1,500회</span></td>
+                                <td className="p-3 md:p-4 text-slate-600 dark:text-slate-400 text-sm">2.0 Flash 기반으로 안정적인 수정이 가능합니다.</td>
+                             </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {/* 2. Strategy */}
+            <div>
+                <h4 className="flex items-center gap-2 font-bold text-slate-900 dark:text-white mb-3 text-lg md:text-xl">
+                    <span className="p-1.5 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg text-yellow-600 dark:text-yellow-400"><MousePointerClick className="w-5 h-5"/></span>
+                    2. 상황별 스마트 스위칭 전략 (Golden Rules)
+                </h4>
+                <div className="bg-yellow-50/80 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-4 backdrop-blur-sm">
+                     <p className="font-bold text-yellow-800 dark:text-yellow-200 text-sm md:text-base flex items-start gap-2">
+                        <Lightbulb className="w-5 h-5 shrink-0 mt-0.5" />
+                        핵심 요약: 평소에는 'Flash'로 달리고, 고비가 올 때만 'Pro'를 깨우세요!
+                     </p>
+                </div>
+                
+                <ul className="space-y-4">
+                    <li className="bg-white/80 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm backdrop-blur-sm">
+                        <h5 className="font-bold text-indigo-600 dark:text-indigo-400 mb-1 flex items-center gap-2">
+                            🏃 가사 초안 및 아이디어 스케치 <span className="text-xs text-slate-400 font-normal">(Stable 모드 권장)</span>
+                        </h5>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            장르 설정, 기본 가사 생성, 스타일 프롬프트 작성 시에는 우측 상단 스위치를 반드시 <strong>[Flash (3.0)]</strong>에 두세요.
+                            <br/>분당 15회 요청이 가능하므로 "다시 만들기" 버튼을 연타해도 안전합니다.
+                        </p>
+                    </li>
+                    <li className="bg-white/80 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm backdrop-blur-sm">
+                        <h5 className="font-bold text-purple-600 dark:text-purple-400 mb-1 flex items-center gap-2">
+                            🧠 철학적 가사나 복잡한 편곡 요청 <span className="text-xs text-slate-400 font-normal">(Pro 모드 전환)</span>
+                        </h5>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            "가사가 너무 뻔하다"고 느껴질 때만 잠시 <strong>[Pro (3.0)]</strong>를 켜세요.
+                            <br/><span className="text-red-500 font-bold">주의:</span> Pro 모드는 하루 50번의 기회뿐입니다. 결과물이 만족스럽다면 즉시 다시 Flash 모드로 복귀하는 습관이 중요합니다.
+                        </p>
+                    </li>
+                    <li className="bg-white/80 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm backdrop-blur-sm">
+                        <h5 className="font-bold text-green-600 dark:text-green-400 mb-1 flex items-center gap-2">
+                            🎵 오디오 분석 (BPM/Key 감지)
+                        </h5>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            오디오 파일은 텍스트보다 훨씬 많은 '데이터(토큰)'를 소모합니다.
+                            <br/>1분 내외의 짧은 클립 위주로 분석하고, 연속 업로드 시 잠시(1~2분) 휴식기를 갖는 것이 API 차단을 막는 비결입니다.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            {/* 3. Troubleshooting */}
+            <div>
+                <h4 className="flex items-center gap-2 font-bold text-slate-900 dark:text-white mb-3 text-lg md:text-xl">
+                    <span className="p-1.5 bg-red-100 dark:bg-red-900/30 rounded-lg text-red-600 dark:text-red-400"><AlertCircle className="w-5 h-5"/></span>
+                    3. 장애 발생 시 대처법 (Troubleshooting)
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                     <div className="bg-slate-50/80 dark:bg-slate-800/30 p-4 rounded-xl border border-slate-200 dark:border-slate-700 backdrop-blur-sm">
+                        <h5 className="font-bold text-slate-800 dark:text-slate-200 mb-2 text-sm">🛑 "429 Too Many Requests" 오류</h5>
+                        <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-2">현재 설정된 모델의 분당 요청 한도를 초과한 것입니다.</p>
+                        <div className="bg-white dark:bg-slate-800 p-2 rounded text-xs text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-600 font-medium">
+                            ✅ <strong>해결책:</strong> 앱의 자동 우회 시스템이 작동할 때까지 10초 정도 기다리거나, 모델 설정을 한 단계 낮은 등급(예: Pro → Flash)으로 변경해 보세요.
+                        </div>
+                     </div>
+                     <div className="bg-slate-50/80 dark:bg-slate-800/30 p-4 rounded-xl border border-slate-200 dark:border-slate-700 backdrop-blur-sm">
+                        <h5 className="font-bold text-slate-800 dark:text-slate-200 mb-2 text-sm">🖼️ 이미지 생성(Art Tab) 불가</h5>
+                        <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-2">이미지 모델은 텍스트보다 훨씬 엄격하게 관리됩니다.</p>
+                        <div className="bg-white dark:bg-slate-800 p-2 rounded text-xs text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-600 font-medium">
+                            ✅ <strong>해결책:</strong> Na Banana (Fast) 모드를 우선 사용하시고, 앨범 커버 최종 확정 단계에서만 <strong>Pro (HD)</strong>를 사용하세요.
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+            {/* 4. Privacy */}
+            <div className="bg-slate-900/90 dark:bg-white/10 text-white p-5 rounded-xl flex gap-4 items-start shadow-md backdrop-blur-md">
+                <ShieldAlert className="w-6 h-6 text-red-400 shrink-0 mt-0.5" />
+                <div>
+                    <h4 className="font-bold text-lg mb-1">⚠️ 꼭 알아두세요! (Privacy)</h4>
+                    <p className="text-slate-300 dark:text-slate-200 text-sm leading-relaxed opacity-90">
+                        무료 API 키를 사용하면 입력한 가사나 프롬프트가 Google의 모델 학습 데이터로 활용될 수 있습니다. 
+                        보안이 중요한 미발표 곡 정보나 개인정보는 입력 시 주의가 필요합니다.
+                    </p>
+                </div>
+            </div>
+          </div>
         </AccordionItem>
       </div>
     </section>
