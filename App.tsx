@@ -256,13 +256,13 @@ const App: React.FC = () => {
 
                        <div className="relative flex flex-col items-center text-center gap-4">
                           <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-[10px] md:text-xs font-extrabold tracking-[0.2em] shadow-lg shadow-indigo-500/30 border border-white/20">
-                             COMING SOON
+                             UPDATE COMPLETE
                           </span>
                           
                           <h2 className="text-2xl md:text-4xl font-black text-slate-900 dark:text-white leading-tight">
                              Suno Studio Pro<br className="md:hidden" />
                              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-violet-600 ml-0 md:ml-2">
-                                V1.6 업데이트 예정
+                                V1.6 업데이트 완료
                              </span>
                           </h2>
                           
